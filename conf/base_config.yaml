@@ -1,0 +1,14 @@
+# Caminhos dos dados
+
+paths:
+  bronze: "workspace.default.paysim_bronze" 
+  silver: "fraud_det_project.paysim_silver"
+  gold:   "fraud_det_project.paysim_gold"
+
+  
+# Parâmetros de negócio
+
+business_rules:
+  fraud_types:
+    - "TRANSFER"
+    - "CASH_OUT"
