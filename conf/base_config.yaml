@@ -3,7 +3,7 @@
 paths:
   bronze: "workspace.default.paysim_bronze" 
   silver: "fraud_det_project.paysim_silver"
-  gold:   "fraud_det_project.paysim_gold"
+  gold: "fraud_det_project.paysim_gold"
 
   
 # Parâmetros de negócio
