@@ -1,7 +1,8 @@
 # Caminhos dos dados
 
 paths:
-  bronze: "workspace.default.paysim_bronze" 
+  raw: "workspace.default.paysim_bronze" 
+  bronze: "fraud_det_project.paysim_bronze" 
   silver: "fraud_det_project.paysim_silver"
   gold: "fraud_det_project.paysim_gold"
 
