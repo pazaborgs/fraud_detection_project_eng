@@ -1,0 +1,11 @@
+paths:
+  raw: "your_catalog.your_schema.raw_table"
+  bronze: "your_catalog.your_schema.bronze_table"
+  silver: "your_catalog.your_schema.silver_table"
+  gold: "your_catalog.your_schema.gold_table"
+  experiment: "/Users/your_email@example.com/your_experiment_name"
+
+business_rules:
+  fraud_types:
+    - "TRANSFER"
+    - "CASH_OUT"
