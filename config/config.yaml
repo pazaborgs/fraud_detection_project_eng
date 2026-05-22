@@ -5,6 +5,7 @@ paths:
   bronze: "fraud_det_project.paysim_bronze" 
   silver: "fraud_det_project.paysim_silver"
   gold: "fraud_det_project.paysim_gold"
+  experiment: "/Users/patsrgsreis@gmail.com/fraud_detection_xgboost_experiment"
 
   
 # Parâmetros de negócio

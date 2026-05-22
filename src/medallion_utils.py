@@ -1,11 +1,15 @@
 import yaml
 from pyspark.sql import functions as F
+import os
 
 # ============================================
 # LOAD_CONFIG
 # ============================================
 
-def load_config(config_path="../config/config.yaml"):
+def load_config(config_path=None):
+    if config_path is None:
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        config_path = os.path.join(base_dir, "..", "config", "config.yaml")
     try:
         with open(config_path, "r") as file:
             return yaml.safe_load(file)
@@ -130,10 +134,18 @@ def process_gold(spark, config):
         "dest_is_empty", 
         F.when(F.col("old_balance_dest") == 0, F.lit(1)) # 1 = Standard Mule Pattern
          .otherwise(F.lit(0))                            # 0 = Account with History
+    ).withColumn(
+        "balance_was_zeroed",
+        F.when(F.col("new_balance_orig") == 0, F.lit(1))
+        .otherwise(F.lit(0))
+    ).withColumn(
+        "amount_exceeds_balance",
+        F.when(F.col("amount") > F.col("old_balance_org"), F.lit(1))
+        .otherwise(F.lit(0))
     )
 
     features_list = [
-        "step", "hour_of_day", "type_idx", "amount",
+        "hour_of_day", "type_idx", "amount",
         "old_balance_org", "error_orig", "old_balance_dest",
         "error_dest", "dest_is_empty", "ratio_amount_balance", "is_fraud"
     ]
